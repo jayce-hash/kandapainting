@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K&A Painting Co. | Krum, TX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Resets --- */
+        :root {
+            --primary: #1e3a8a;    /* Deep Navy */
+            --primary-light: #3b82f6; /* Bright Blue */
+            --accent: #f59e0b;     /* Warm Amber / Gold */
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.8)), url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop') center/cover;
+            color: var(--white);
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+
+        .hero .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        /* --- Services Section --- */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0.5rem auto 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- About Section --- */
+        .about {
+            background-color: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item span {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* --- Responsive Design (Mobile Friendly) --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* In a real scenario, implement a hamburger menu here */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">K&A <span>Painting Co.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:9403992406" class="btn">Call (940) 399-2406</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Transform Your Space with K&A Painting</h1>
+        <p>Premium residential and commercial painting services across Krum, Collin County, and the Greater Dallas Area. From drywall repair to complete exterior transformations, we do it all.</p>
+        <a href="#contact" class="btn">Get a Free Estimate</a>
+        <a href="#services" class="btn btn-outline">Our Services</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Expertise</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🏠</div>
+                <h3>Interior & Exterior Painting</h3>
+                <p>Flawless finishes for your home or business. We handle trim, walls, siding, and brick to elevate your property's curb appeal and interior mood.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🪵</div>
+                <h3>Wood Restoration & Staining</h3>
+                <p>Protect and beautify your wood surfaces. We offer professional wood staining for fences, decks, and interior features.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔨</div>
+                <h3>Drywall & Texturing</h3>
+                <p>Complete drywall installation and repair. We also specialize in popcorn ceiling removal and modern re-texturing.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧑‍🍳</div>
+                <h3>Kitchen Cabinet Painting</h3>
+                <p>Update your kitchen without the cost of a full remodel. Our smooth cabinet painting process breathes new life into your space.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🚗</div>
+                <h3>Garage Doors & Floors</h3>
+                <p>Refresh the look of your garage. We offer highly durable garage floor coatings and detailed garage door painting.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💦</div>
+                <h3>Pressure Washing & Prep</h3>
+                <p>Thorough power washing to remove grime and prepare surfaces for the perfect, long-lasting coat of paint.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?q=80&w=2031&auto=format&fit=crop" alt="Painter working on a wall">
+            </div>
+            <div class="about-text">
+                <h2>About K&A Painting Co.</h2>
+                <p>Based in the heart of Krum, TX, K&A Painting provides a wide range of top-tier painting services for residential and commercial clients throughout Dallas and Collin Counties.</p>
+                <p>We have the in-house capabilities to handle everything from complex wallpaper removal and drywall patching to intricate trim painting and commercial office renovations. Our highly-trained technicians prioritize extreme attention to detail and absolute customer satisfaction in every aspect of their work.</p>
+                <p>Whether you need a single room refreshed or an entire commercial building painted inside and out, K&A Painting delivers results you can trust.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Ready to Start Your Project?</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">Reach out to us today for a consultation and a free, no-obligation estimate. We look forward to bringing your vision to life.</p>
+                
+                <div class="info-item">
+                    <span>📍</span>
+                    <div>
+                        <strong>Address:</strong><br>
+                        6124 Jackson Rd<br>
+                        Krum, TX 76249
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <span>📞</span>
+                    <div>
+                        <strong>Phone:</strong><br>
+                        <a href="tel:9403992406">(940) 399-2406</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>🕒</span>
+                    <div>
+                        <strong>Hours:</strong><br>
+                        Monday - Friday: 8:00 AM - 5:00 PM<br>
+                        Saturday: By Appointment
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 K&A Painting Co. All rights reserved. | Krum, Texas</p>
+    </footer>
+
+</body>
+</html>
